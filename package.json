@@ -1,0 +1,22 @@
+{
+  "name": "automation-bootcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manriboy/manri-automation-bootcamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manriboy/manri-automation-bootcamp/issues"
+  },
+  "homepage": "https://github.com/Manriboy/manri-automation-bootcamp#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.17"
+  }
+}
