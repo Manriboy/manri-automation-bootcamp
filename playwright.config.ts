@@ -40,6 +40,12 @@ export default defineConfig({
     },
 
     {
+      name: 'brave',
+      use: { ...devices['Desktop Brave'] }
+
+    },
+
+    {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
