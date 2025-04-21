@@ -65,7 +65,7 @@ await billingPage.fillEmail('jose@ufplus.cl');
 await billingPage.fillNotes('AMO EL PADEL');
 await billingPage.fillDiscount('DESCUENTO94');
 await billingPage.clickDiscountButton();
-await billingPage.fillCreditCardNumber('4321567812348765');
+await billingPage.fillCreditCardNumber('4242424242424242');
 await billingPage.fillCreditCardExpirationDate('03/30');
 await billingPage.fillCreditCardCVC('696');
 await billingPage.acceptTermsAndConditions();
