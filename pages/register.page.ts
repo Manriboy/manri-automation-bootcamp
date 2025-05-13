@@ -55,3 +55,5 @@ export class RegisterPage {
         return message;
     }
 }
+
+

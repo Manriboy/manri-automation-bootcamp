@@ -70,5 +70,5 @@ await billingPage.fillCreditCardExpirationDate('03/30');
 await billingPage.fillCreditCardCVC('696');
 await billingPage.acceptTermsAndConditions();
 await billingPage.placeOrder();
-await page.pause();
+
 });

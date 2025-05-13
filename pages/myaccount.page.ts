@@ -1,8 +1,10 @@
 import { Page, Locator, expect } from "@playwright/test"; 
+import { CartComponent } from "./cart.component";
 
 export class MyAccount {
     readonly page: Page;
     readonly topLogoImage: Locator;
+    readonly cartModal: CartComponent;
     
     constructor(page:Page){
         this.page = page;
@@ -12,5 +14,10 @@ export class MyAccount {
     async clickTopLogo() {
       await this.topLogoImage.click();
     }
+
+    async getTitle() {
+      return await this.page.title();
+    }
+
 
 }

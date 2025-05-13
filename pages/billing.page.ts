@@ -18,6 +18,7 @@ export class BillingPage {
     readonly cvcTextFields: Locator;
     readonly aggreeTerms: Locator;
     readonly placeOrderButton: Locator;
+    readonly messageOrderPlacedLabel: Locator;
 
     constructor(page:Page){
         this.page = page;
@@ -36,6 +37,7 @@ export class BillingPage {
         this.cvcTextFields = page.locator('#wrapper > section > div > div > div.tf-page-cart-footer > div > form > div.box.grid-2 > div:nth-child(2) > input[type=text]');
         this.aggreeTerms = page.locator('#check-agree');
         this.placeOrderButton = page.locator('#wrapper > section > div > div > div.tf-page-cart-footer > div > form > button');
+        this.messageOrderPlacedLabel = page.locator('#order-message > p');
     }
 
 
@@ -98,5 +100,18 @@ export class BillingPage {
     async placeOrder() {
         await this.placeOrderButton.click();
     }
+
+    async getPlacedOrderMessage() {
+        return await this.messageOrderPlacedLabel.innerText();
+      }
+
+      async getOrderId(): Promise<string> {
+        const msg = await this.getPlacedOrderMessage();
+        // Dividimos por ":" y tomamos la última parte, luego eliminamos espacios
+        const parts = msg.split(':');
+        return parts[1].trim();
+      }
+
+
 
 }

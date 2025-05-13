@@ -30,6 +30,7 @@ export class ProductPage {
         this.addToCartButton = page.locator(
           'div:nth-child(2) > div > div.tf-product-info-list.other-image-zoom > div.tf-product-info-buy-button > form > a.tf-btn.btn-fill.justify-content-center.fw-6.fs-16.flex-grow-1.animate-hover-btn'
         )
+        this.cartModal = new CartComponent(page);
       }
     
       async selectColorFromPicker(colorToPick: ColorOption) {

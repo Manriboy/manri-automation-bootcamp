@@ -1,18 +1,28 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+const envName = process.env.ENVIRONMENT;
+
+let envFile = '.env'; // Default
+if (envName === 'dev') {
+  envFile = '.dev.env';
+} else if (envName === 'prod') {
+  envFile = '.prod.env';
+}
+
+dotenv.config({ path: path.resolve(__dirname, envFile) });
+console.log(`Loaded environment file: ${envFile}`);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -30,6 +40,12 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
+
+  expect: {
+    timeout: 15000
   },
 
   /* Configure projects for major browsers */
@@ -37,24 +53,7 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'brave',
-      use: { ...devices['Desktop Brave'] }
-
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
+    }
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
